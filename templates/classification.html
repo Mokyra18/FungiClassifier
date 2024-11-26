@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mushroom Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mushroom Image Classification</h1>
+
+        <div class="upload-section">
+            <h2>Upload an Image</h2>
+            <form action="/submit" method="post" enctype="multipart/form-data">
+                <input type="file" name="my_image" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        {% if prediction %}
+        <div class="result-section">
+            <h2>Classification Result</h2>
+            <img src="{{ img_path }}" alt="Uploaded Image">
+            <p>Prediction: <strong>{{ prediction }}</strong></p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
